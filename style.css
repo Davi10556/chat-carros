@@ -1,0 +1,21 @@
+body {
+  font-family: Arial;
+  background: #111;
+  color: white;
+  margin: 0;
+}
+
+#login, #chat {
+  padding: 20px;
+}
+
+#messages {
+  height: 80vh;
+  overflow-y: auto;
+  border: 1px solid #333;
+  padding: 10px;
+}
+
+.msg {
+  margin-bottom: 8px;
+}
