@@ -1,21 +1,67 @@
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: #111;
   color: white;
   margin: 0;
 }
 
-#login, #chat {
-  padding: 20px;
+#login {
+  padding: 30px;
 }
 
-#messages {
-  height: 80vh;
-  overflow-y: auto;
-  border: 1px solid #333;
+#login input {
+  padding: 8px;
+}
+
+#login button {
+  padding: 8px 12px;
+  margin-left: 5px;
+}
+
+#chat {
   padding: 10px;
 }
 
+#messages {
+  height: 75vh;
+  overflow-y: auto;
+  border: 1px solid #333;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
 .msg {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+}
+
+/* BOTÃO ADM */
+#adminBtn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 10px;
+  padding: 4px 6px;
+  background: #400;
+  color: white;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+#adminBtn:hover {
+  opacity: 1;
+}
+
+#send {
+  display: flex;
+  gap: 5px;
+}
+
+#send input {
+  flex: 1;
+  padding: 8px;
+}
+
+#send button {
+  padding: 8px 12px;
 }
