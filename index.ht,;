@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="login">
+  <h2>Digite seu nome</h2>
+  <input id="nameInput" placeholder="Seu nome">
+  <button onclick="entrar()">Entrar</button>
+</div>
+
+<div id="chat" style="display:none">
+  <div id="messages"></div>
+
+  <div id="send">
+    <input id="msgInput" placeholder="Digite uma mensagem">
+    <button onclick="enviar()">Enviar</button>
+  </div>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
