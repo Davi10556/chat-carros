@@ -11,7 +11,7 @@ import {
   doc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// 🔴 CONFIG FIREBASE
+/* ===== CONFIG FIREBASE ===== */
 const firebaseConfig = {
   apiKey: "AIzaSyC-Hhz0NmqE-knFuaflOwaxQdXdMWgivic",
   authDomain: "chat-carros.firebaseapp.com",
@@ -20,6 +20,16 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+/* ===== DETECTA PC OU CELULAR ===== */
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+if (isMobile) {
+  document.body.classList.add("mobile");
+  console.log("📱 Celular detectado");
+} else {
+  console.log("🖥️ PC detectado");
+}
 
 let nome = "";
 
@@ -84,7 +94,7 @@ window.admin = async () => {
     return;
   }
 
-  const confirmar = confirm("TEM CERTEZA que deseja apagar TODAS as mensagens?");
+  const confirmar = confirm("APAGAR TODAS AS MENSAGENS?");
   if (!confirmar) return;
 
   const snap = await getDocs(collection(db, "mensagens"));
