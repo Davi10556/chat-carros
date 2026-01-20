@@ -11,7 +11,7 @@ import {
   doc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-/* ===== CONFIG FIREBASE ===== */
+/* ===== CONFIG FIREBASE (SEUS DADOS) ===== */
 const firebaseConfig = {
   apiKey: "AIzaSyC-Hhz0NmqE-knFuaflOwaxQdXdMWgivic",
   authDomain: "chat-carros.firebaseapp.com",
@@ -21,24 +21,28 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-/* ===== DETECTA PC OU CELULAR ===== */
-const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-if (isMobile) {
-  document.body.classList.add("mobile");
-  console.log("📱 Celular detectado");
-} else {
-  console.log("🖥️ PC detectado");
-}
+/* ===== SENHAS ===== */
+const SITE_PASSWORD = "sitecarros10";
+const ADM_PASSWORD = "10556";
 
 let nome = "";
 
 /* ===== LOGIN ===== */
 window.entrar = () => {
-  nome = document.getElementById("nameInput").value.trim();
-  if (!nome) return;
+  const nomeInput = document.getElementById("nameInput").value.trim();
+  const senhaInput = document.getElementById("passInput").value;
 
-  localStorage.setItem("nome", nome);
+  if (!nomeInput) {
+    alert("Digite seu nome");
+    return;
+  }
+
+  if (senhaInput !== SITE_PASSWORD) {
+    alert("Senha do site incorreta!");
+    return;
+  }
+
+  nome = nomeInput;
 
   document.getElementById("login").style.display = "none";
   document.getElementById("chat").style.display = "block";
@@ -77,8 +81,8 @@ window.enviar = async () => {
   if (!texto) return;
 
   await addDoc(collection(db, "mensagens"), {
-    nome: nome,
-    texto: texto,
+    nome,
+    texto,
     time: Date.now()
   });
 
@@ -89,12 +93,12 @@ window.enviar = async () => {
 window.admin = async () => {
   const senha = prompt("Senha ADM:");
 
-  if (senha !== "10556") {
-    alert("Senha incorreta!");
+  if (senha !== ADM_PASSWORD) {
+    alert("Senha ADM incorreta!");
     return;
   }
 
-  const confirmar = confirm("APAGAR TODAS AS MENSAGENS?");
+  const confirmar = confirm("Apagar TODAS as mensagens?");
   if (!confirmar) return;
 
   const snap = await getDocs(collection(db, "mensagens"));
